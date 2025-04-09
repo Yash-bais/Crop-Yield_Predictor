@@ -32,14 +32,23 @@ def predict():
 
         raw_prediction = dtr.predict(transformed_features)[0]
 
+        # Convert yield
         yield_hg_ha = round(raw_prediction, 2)
         yield_kg_ha = round(yield_hg_ha / 10, 2)
         yield_ton_ha = round(yield_kg_ha / 1000, 4)
+        
+        # Conversion to acre-based yield
+        yield_kg_acre = round(yield_kg_ha / 2.47105, 2)
+        yield_ton_acre = round(yield_kg_acre / 1000, 4)
+
 
         return render_template('index.html',
-                               yield_hg_ha="{:,.2f}".format(yield_hg_ha),
-                               yield_kg_ha="{:,.2f}".format(yield_kg_ha),
-                               yield_ton_ha="{:,.4f}".format(yield_ton_ha))
+                       yield_hg_ha="{:,.2f}".format(yield_hg_ha),
+                       yield_kg_ha="{:,.2f}".format(yield_kg_ha),
+                       yield_ton_ha="{:,.4f}".format(yield_ton_ha),
+                       yield_kg_acre="{:,.2f}".format(yield_kg_acre),
+                       yield_ton_acre="{:,.4f}".format(yield_ton_acre))
+
     except Exception as e:
         return render_template('index.html', error="Something went wrong. Please check your inputs.")
 
