@@ -37,9 +37,9 @@ def predict():
         yield_ton_ha = round(yield_kg_ha / 1000, 4)
 
         return render_template('index.html',
-                               yield_hg_ha=yield_hg_ha,
-                               yield_kg_ha=yield_kg_ha,
-                               yield_ton_ha=yield_ton_ha)
+                               yield_hg_ha="{:,.2f}".format(yield_hg_ha),
+                               yield_kg_ha="{:,.2f}".format(yield_kg_ha),
+                               yield_ton_ha="{:,.4f}".format(yield_ton_ha))
     except Exception as e:
         return render_template('index.html', error="Something went wrong. Please check your inputs.")
 
