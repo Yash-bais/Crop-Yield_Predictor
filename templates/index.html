@@ -96,7 +96,11 @@
       <p><strong>{{ yield_hg_ha }} hg/ha</strong></p>
       <p><strong>{{ yield_kg_ha }} kg/ha</strong></p>
       <p><strong>{{ yield_ton_ha }} tons/ha</strong></p>
+      <hr>
+      <p><strong>{{ yield_kg_acre }} kg/acre</strong></p>
+      <p><strong>{{ yield_ton_acre }} tons/acre</strong></p>
     </div>
+
     {% elif error %}
     <div class="alert alert-danger text-center mt-4">{{ error }}</div>
     {% endif %}
